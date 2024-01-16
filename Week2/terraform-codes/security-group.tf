@@ -1,51 +1,51 @@
-#// Default SG
-#resource "aws_default_security_group" "test-vpc_sg_default"{
-#
-#  vpc_id = aws_vpc.test-vpc.id
-#
-#  ingress {
-#    from_port = 0
-#    to_port   = 0
-#    protocol  = -1
-#    self      = true
-#  }
-#
-#  egress {
-#    from_port   = 0
-#    to_port     = 0
-#    protocol    = -1
-#    cidr_blocks = ["0.0.0.0/0"]
-#  }
-#}
-#
-############ Bastion (EC2 Instance) Security Group ###########
-#
-#resource "aws_security_group" "test-sg-bastion" {
-#
-#  name   = "test-sg-bastion"
-#  vpc_id = aws_vpc.test-vpc.id
-#
-#  ingress {
-#    description = "ingress security_group_rule for bastion"
-#    from_port   = 22
-#    to_port     = 22
-#    protocol    = "tcp"
-#    cidr_blocks = ["0.0.0.0/0"]
-#  }
-#
-#  egress {
-#    description = "egress security_group_rule for bastion"
-#    from_port   = 0
-#    to_port     = 0
-#    protocol    = -1
-#    cidr_blocks = ["0.0.0.0/0"]
-#  }
-#
-#  tags = {
-#    Name = "test-sg-bastion"
-#  }
-#}
-#
+// Default SG
+resource "aws_default_security_group" "test-vpc_sg_default"{
+
+  vpc_id = aws_vpc.test-vpc.id
+
+  ingress {
+    from_port = 0
+    to_port   = 0
+    protocol  = -1
+    self      = true
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+########### Bastion (EC2 Instance) Security Group ###########
+
+resource "aws_security_group" "test-sg-bastion" {
+
+  name   = "test-sg-bastion"
+  vpc_id = aws_vpc.test-vpc.id
+
+  ingress {
+    description = "ingress security_group_rule for bastion"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    description = "egress security_group_rule for bastion"
+    from_port   = 0
+    to_port     = 0
+    protocol    = -1
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "test-sg-bastion"
+  }
+}
+
 ############ EKS Security Group ###########
 #// EKS Control Plane SG
 #// - 컨트롤 플레인과 워커 노드 그룹 간의 통신
