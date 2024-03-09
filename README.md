@@ -1,1 +1,1 @@
-## Develop  퀄리티를 높이는 AWS Kubernetes Container Platform  구축 및 배포 멘토링 강의Code
+## EKS로 웹 애플리케이션 3-Tier 구성
